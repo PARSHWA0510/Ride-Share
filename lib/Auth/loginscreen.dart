@@ -121,13 +121,7 @@ class _LoginPageState extends State<LoginPage> {
               const SizedBox(
                 height: 100,
               ),
-
-              Image(
-                //
-                height: 250,
-
-                image: AssetImage("assets/images/signUp.jpg"),
-              ),
+              Image(height:250, image: AssetImage("assets/images/signUp.jpg"),),
               Row(
                 children: const [
                   Padding(

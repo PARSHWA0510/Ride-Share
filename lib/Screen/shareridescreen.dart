@@ -36,10 +36,10 @@ class _ShareRideTabState extends State<ShareRideTab> {
 
   DatabaseReference dbCarRef = FirebaseDatabase.instance.ref("CarInfo");
   DatabaseReference dbAddInfoRef =
-      FirebaseDatabase.instance.ref("AdditionalSignUpInfo");
+  FirebaseDatabase.instance.ref("AdditionalSignUpInfo");
 
   DatabaseReference shareRideRef =
-      FirebaseDatabase.instance.ref("ShareRideInfo");
+  FirebaseDatabase.instance.ref("ShareRideInfo");
 
   checkCarDetails(String? uid) async {
     DatabaseReference ref = FirebaseDatabase.instance.ref("CarInfo");
@@ -102,7 +102,7 @@ class _ShareRideTabState extends State<ShareRideTab> {
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: SelectWeekDays(
-                      fontSize: 13,
+                      fontSize: 14,
                       fontWeight: FontWeight.w500,
                       days: _days,
                       border: false,
@@ -179,23 +179,23 @@ class _ShareRideTabState extends State<ShareRideTab> {
 
   final List<DayInWeek> _days = [
     DayInWeek(
-      "Sun",
+      "Sun", dayKey: '',
     ),
     DayInWeek(
-      "Mon",
+      "Mon", dayKey: '',
     ),
-    DayInWeek("Tue", isSelected: true),
+    DayInWeek("Tue", isSelected: true, dayKey: ''),
     DayInWeek(
-      "Wed",
-    ),
-    DayInWeek(
-      "Thu",
+      "Wed", dayKey: '',
     ),
     DayInWeek(
-      "Fri",
+      "Thu", dayKey: '',
     ),
     DayInWeek(
-      "Sat",
+      "Fri", dayKey: '',
+    ),
+    DayInWeek(
+      "Sat", dayKey: '',
     ),
   ];
   @override
@@ -237,8 +237,8 @@ class _ShareRideTabState extends State<ShareRideTab> {
                     }
                   },
                   decoration: InputDecoration(
-                      // labelText: 'From',
-                      // contentPadding: EdgeInsets.symmetric(vertical: 4),
+                    // labelText: 'From',
+                    // contentPadding: EdgeInsets.symmetric(vertical: 4),
                       hintText: 'From',
                       hintStyle: const TextStyle(color: Colors.grey),
                       labelStyle: const TextStyle(
@@ -270,7 +270,7 @@ class _ShareRideTabState extends State<ShareRideTab> {
                     }
                   },
                   decoration: InputDecoration(
-                      // labelText: 'From',
+                    // labelText: 'From',
                       hintText: 'To',
                       hintStyle: const TextStyle(color: Colors.grey),
                       labelStyle: const TextStyle(
@@ -310,7 +310,7 @@ class _ShareRideTabState extends State<ShareRideTab> {
                             color: Color.fromARGB(255, 203, 202, 202))),
                   ),
                   readOnly:
-                      true, //set it true, so that user will not able to edit text
+                  true, //set it true, so that user will not able to edit text
                   onTap: () async {
                     dateTimePickerWidget(context);
                   },
@@ -331,15 +331,14 @@ class _ShareRideTabState extends State<ShareRideTab> {
                     _showBottomNavigationDays();
                   },
                   decoration: const InputDecoration(
-                      // labelText: 'From',
-                      // contentPadding: EdgeInsets.symmetric(vertical: 4),
+                    // labelText: 'From',
+                    // contentPadding: EdgeInsets.symmetric(vertical: 4),
                       hintText: 'Recurring Ride - Mo,Tu,We,Th,Fr,Sa,Su',
                       hintStyle:
-                          TextStyle(color: Color.fromARGB(255, 100, 145, 236)),
+                      TextStyle(color: Color.fromARGB(255, 100, 145, 236)),
                       labelStyle: TextStyle(
                           fontFamily: 'Montserrat',
                           fontWeight: FontWeight.bold,
-
                           color: Color.fromARGB(255, 203, 202, 202)),
                       prefixIcon: Icon(
                         Icons.repeat,
@@ -355,90 +354,90 @@ class _ShareRideTabState extends State<ShareRideTab> {
                 Center(
                     child: isCarAdded
                         ? TextFormField(
-                            style: const TextStyle(fontSize: 14),
-                            controller: carController,
-                            keyboardType: TextInputType.text,
-                            enabled: false,
-                            decoration: const InputDecoration(
-                                hintStyle: TextStyle(color: Colors.grey),
-                                labelStyle: TextStyle(
-                                    fontFamily: 'Montserrat',
-                                    fontWeight: FontWeight.bold,
-                                    color: Color.fromARGB(255, 203, 202, 202)),
-                                prefixIcon: Icon(
-                                  Icons.directions_car,
-                                  color: Colors.grey,
-                                  size: 18,
-                                ),
-                                focusedBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                        strokeAlign: 60,
-                                        color: Color.fromARGB(
-                                            255, 203, 202, 202)))),
-                          )
+                      style: const TextStyle(fontSize: 14),
+                      controller: carController,
+                      keyboardType: TextInputType.text,
+                      enabled: false,
+                      decoration: const InputDecoration(
+                          hintStyle: TextStyle(color: Colors.grey),
+                          labelStyle: TextStyle(
+                              fontFamily: 'Montserrat',
+                              fontWeight: FontWeight.bold,
+                              color: Color.fromARGB(255, 203, 202, 202)),
+                          prefixIcon: Icon(
+                            Icons.directions_car,
+                            color: Colors.grey,
+                            size: 18,
+                          ),
+                          focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                  strokeAlign: 60,
+                                  color: Color.fromARGB(
+                                      255, 203, 202, 202)))),
+                    )
                         : TextFormField(
-                            style: const TextStyle(fontSize: 14),
-                            controller: carController,
-                            keyboardType: TextInputType.text,
-                            // enabled: false,
-                            onTap: () {
-                              Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (BuildContext context) =>
-                                      const CarDetailScreen()));
-                            },
-                            decoration: const InputDecoration(
-                                hintText: "No car Added! Please Add",
-                                hintStyle: TextStyle(
-                                    color: Color.fromARGB(255, 100, 145, 236)),
-                                labelStyle: TextStyle(
-                                    fontFamily: 'Montserrat',
-                                    fontWeight: FontWeight.bold,
-                                    color: Color.fromARGB(255, 203, 202, 202)),
-                                prefixIcon: Icon(
-                                  Icons.directions_car,
-                                  color: Colors.grey,
-                                  size: 18,
-                                ),
-                                focusedBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                        strokeAlign: 60,
-                                        color: Color.fromARGB(
-                                            255, 203, 202, 202)))),
-                          )
+                      style: const TextStyle(fontSize: 14),
+                      controller: carController,
+                      keyboardType: TextInputType.text,
+                      // enabled: false,
+                      onTap: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (BuildContext context) =>
+                            const CarDetailScreen()));
+                      },
+                      decoration: const InputDecoration(
+                          hintText: "No car Added! Please Add",
+                          hintStyle: TextStyle(
+                              color: Color.fromARGB(255, 100, 145, 236)),
+                          labelStyle: TextStyle(
+                              fontFamily: 'Montserrat',
+                              fontWeight: FontWeight.bold,
+                              color: Color.fromARGB(255, 203, 202, 202)),
+                          prefixIcon: Icon(
+                            Icons.directions_car,
+                            color: Colors.grey,
+                            size: 18,
+                          ),
+                          focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                  strokeAlign: 60,
+                                  color: Color.fromARGB(
+                                      255, 203, 202, 202)))),
+                    )
 
-                    // SizedBox(
-                    //     height: 45.0,
-                    //     child: ElevatedButton(
-                    //       style: ElevatedButton.styleFrom(
-                    //         shadowColor: Colors.blueAccent,
-                    //         backgroundColor: Colors.blue,
-                    //         elevation: 7.0, //elevation of button
-                    //         shape: RoundedRectangleBorder(
-                    //             //to set border radius to button
-                    //             borderRadius: BorderRadius.circular(20)),
-                    //       ),
-                    //       onPressed: () {
-                    //         Navigator.of(context).push(MaterialPageRoute(
-                    //             builder: (BuildContext context) =>
-                    //                 const CarDetailScreen()));
-                    //       },
-                    //       child: Center(
-                    //         child: isLoading
-                    //             ? const CircularProgressIndicator(
-                    //                 strokeWidth: 3,
-                    //                 color: Colors.white,
-                    //               )
-                    //             : const Text(
-                    //                 'ADD Car',
-                    //                 style: TextStyle(
-                    //                     color: Colors.white,
-                    //                     fontWeight: FontWeight.bold,
-                    //                     fontFamily: 'Montserrat'),
-                    //               ),
-                    //       ),
-                    //     ),
-                    //   ),
-                    ),
+                  // SizedBox(
+                  //     height: 45.0,
+                  //     child: ElevatedButton(
+                  //       style: ElevatedButton.styleFrom(
+                  //         shadowColor: Colors.blueAccent,
+                  //         backgroundColor: Colors.blue,
+                  //         elevation: 7.0, //elevation of button
+                  //         shape: RoundedRectangleBorder(
+                  //             //to set border radius to button
+                  //             borderRadius: BorderRadius.circular(20)),
+                  //       ),
+                  //       onPressed: () {
+                  //         Navigator.of(context).push(MaterialPageRoute(
+                  //             builder: (BuildContext context) =>
+                  //                 const CarDetailScreen()));
+                  //       },
+                  //       child: Center(
+                  //         child: isLoading
+                  //             ? const CircularProgressIndicator(
+                  //                 strokeWidth: 3,
+                  //                 color: Colors.white,
+                  //               )
+                  //             : const Text(
+                  //                 'ADD Car',
+                  //                 style: TextStyle(
+                  //                     color: Colors.white,
+                  //                     fontWeight: FontWeight.bold,
+                  //                     fontFamily: 'Montserrat'),
+                  //               ),
+                  //       ),
+                  //     ),
+                  //   ),
+                ),
 
                 const SizedBox(
                   height: 15,

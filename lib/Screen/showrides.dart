@@ -41,12 +41,10 @@ class _ShowRideScreenState extends State<ShowRideScreen> {
   Future<List<Map<String, dynamic>>> searchRide(
       String? uid, String from, String to) async {
     DatabaseReference ref = FirebaseDatabase.instance.ref("ShareRideInfo");
-
     DatabaseReference userRef = FirebaseDatabase.instance.ref("UserInfo");
 
     Query query = ref.orderByChild("id").equalTo(uid);
     DataSnapshot dataSnapshot = await query.get();
-
     print(dataSnapshot.value);
 
     if (dataSnapshot.value != null) {

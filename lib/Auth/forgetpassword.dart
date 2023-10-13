@@ -6,7 +6,6 @@ import 'package:rideshare/Utills/utills.dart';
 
 class ForgetPassword extends StatefulWidget {
   const ForgetPassword({Key? key}) : super(key: key);
-
   @override
   State<ForgetPassword> createState() => _ForgetPasswordState();
 }

@@ -1,6 +1,10 @@
 import 'dart:convert';
 import 'dart:developer';
+import 'dart:html';
+import 'dart:html';
+import 'dart:html';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rideshare/views/chat_user_card.dart';
@@ -52,20 +56,20 @@ class _ChatHomeScreenState extends State<ChatHomeScreen> {
       ),
 
       body : StreamBuilder(
-        stream: APIs.getAllUsers(),
+        stream: APIs.firestore.collection('users').snapshots(),
+        //stream: APIs.getAllUsers(),
         builder: (context, snapshot){
-
           switch (snapshot.connectionState){
             case ConnectionState.waiting:
             case ConnectionState.none:
               return const Center(child: CircularProgressIndicator());
             case ConnectionState.active:
             case ConnectionState.done:
-              final data = snapshot.data?.docs;
-              list = data
-                  ?.map((e) => ChatUser.fromJson(e.data()))
-                  .toList() ??
-                  [];
+              // final data = snapshot.data?.document;
+              // list = data
+              //     ?.map((e) => ChatUser.fromJson(e.data()))
+              //     .toList() ??
+              //     [];
               // for(var i in data!){
               //   log('\n Data : ${jsonEncode(i.data())}');
               //   list.add(i.data()['name']);

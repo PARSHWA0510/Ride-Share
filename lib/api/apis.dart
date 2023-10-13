@@ -10,7 +10,7 @@ class APIs{
   //For authentication
   static FirebaseAuth auth = FirebaseAuth.instance;
 
-  //For accessing clud firestore database
+  //For accessing cloud firestore database
   static FirebaseFirestore firestore = FirebaseFirestore.instance;
 
 
@@ -62,7 +62,16 @@ class APIs{
   }
 
   // for getting all users from firestore database
-  static Stream<QuerySnapshot<Map<String, dynamic>>> getAllUsers(){
-    return firestore.collection('users').where('id', isNotEqualTo: user.uid).snapshots();
+  static Stream<QuerySnapshot<Map<String, dynamic>>> getAllUsers(
+      List<String> userIds) {
+
+    return firestore
+        .collection('users')
+        .where('id',
+        whereIn: userIds.isEmpty
+            ? ['']
+            : userIds) //because empty list throws an error
+    // .where('id', isNotEqualTo: user.uid)
+        .snapshots();
   }
 }

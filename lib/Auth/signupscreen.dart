@@ -31,8 +31,7 @@ class _SignUpPageState extends State<SignUpPage> {
     setState(() {
       isLoading = true;
     });
-    _auth
-        .createUserWithEmailAndPassword(
+    _auth.createUserWithEmailAndPassword(
             email: emailController.text, password: passwordController.text)
         .then((value) {
       setState(() {

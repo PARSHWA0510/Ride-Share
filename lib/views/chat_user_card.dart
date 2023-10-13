@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rideshare/models/chat_user.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ChatUserCard extends StatefulWidget {
   final ChatUser user;
